@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {fetchWeatherUserLocation} from './fetch'
 
 const Weather = () => {
 
+    const [data, setData] = useState({})
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
     const [temperature, setTemperature] = useState("")
@@ -9,30 +11,13 @@ const Weather = () => {
     const [weatherCondition, setWeatherCondition] = useState("")
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        let lat = pos.coords.latitude;
-        let lon = pos.coords.longitude;
-        //const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b86a040eae9280afdfff416815b2f168`;
-        console.log("Latituide is: ", pos.coords.latitude);
-        console.log("Longitude is: ", pos.coords.longitude);
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b86a040eae9280afdfff416815b2f168`
-        )
-          .then((res) => res.json())
-          .then((res)=>{
-              console.log(res)
-              setCity(res.name)
-              setCountry(res.sys.country)
-              setTemperature(res.main.temp - 273.15)
-              setIcon(res.weather[0].icon)
-              setWeatherCondition(res.weather[0].description)
-          });
-      },
-      (error) => {
-        console.error("Error Code = " + error.code + " - " + error.message);
+      const fetchWUserWeatherCondition = async ()=>{
+          setData(await fetchWeatherUserLocation())
+          //console.log(data)
       }
-    );
+    
+      
+      fetchWUserWeatherCondition()
     return () => {
       //cleanup
     };
