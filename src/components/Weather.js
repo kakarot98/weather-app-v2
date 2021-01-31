@@ -14,18 +14,14 @@ const Weather = () => {
       const location = await fetchUserLocation();
 
       if (location !== null) {
-        const data = await fetchWeather(
-          location.latitude,
-          location.longitude
-        );
+        const data = await fetchWeather(location.latitude, location.longitude);
 
         if (data !== null) {
           setCity(data.name);
-          setCountry(data.sys.country)
-          setTemperature(data.main.temp - 273.15)
-          setWeatherCondition(data.weather[0].main)
-          setIcon(data.weather[0].icon)
-          
+          setCountry(data.sys.country);
+          setTemperature(data.main.temp - 273.15);
+          setWeatherCondition(data.weather[0].main);
+          setIcon(data.weather[0].icon);
         }
       }
     };
@@ -38,18 +34,23 @@ const Weather = () => {
 
   return (
     <div className="Weather">
-      
-      <p className="Weather-city-name">City: {city}</p>
-      <p className="Weather-country-name">Country: {country}</p>
-      <p className="Weather-temperature">Current temperature: {temperature}</p>
+      <p className="Weather-temperature">
+        {temperature}{'\u00b0'}
+        C
+      </p>
+      <p className="Weather-location">
+        {city}, {country}
+      </p>
       <p className="weather-description">
         Weather Condition: {weatherCondition}
       </p>
-      {icon && <img
-        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt=""
-        className="icon"
-      />}
+      {icon && (
+        <img
+          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt=""
+          className="icon"
+        />
+      )}
     </div>
   );
 };

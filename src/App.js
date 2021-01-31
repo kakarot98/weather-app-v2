@@ -14,10 +14,10 @@ function App() {
   return (
     <div className="App">
       <Weather />
-      <button className="button" onClick={() => showForm()}>
+      {/*<button className="button" onClick={() => showForm()}>
         Check weather conditions of a location
       </button>
-      {showCustomLocation && <Form />}
+      {showCustomLocation && <Form />}*/}
     </div>
   );
 }
