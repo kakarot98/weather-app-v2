@@ -1,19 +1,14 @@
 * {
-  background-color: #eaecf1;
-    align-items: center;
+  background-color: #ffffff;
+  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-  
-
-  
 }
 
 .App {
   margin: auto;
   width: 50%;
   height: 50%;
-  text-align: center;
   align-content: center;
-  
 }
