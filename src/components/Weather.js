@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchUserLocation, fetchWeather } from "./fetch";
-import styles from './Weather.module.css'
+import styles from "./Weather.module.css";
 
 const Weather = () => {
- // const [weatherData, setWeatherData] = useState({});
+  // const [weatherData, setWeatherData] = useState({});
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [temperature, setTemperature] = useState("");
@@ -37,21 +37,28 @@ const Weather = () => {
 
   return (
     <div className={styles.weatherBox}>
-      {!temperature && <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading"/>}
-      {temperature && (<div className={styles.weatherDescritpion}>
-        <p className={styles.weatherDescriptionData}>
-        {temperature + "\u00b0C, "}
-        {weatherCondition}
-      </p>
-      <img
-          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-          alt=""
-          className={styles.weatherDescriptionIcon}
+      {!temperature && (
+        <img
+          src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+          alt="loading"
         />
-         <p className={styles.weatherDescriptionLocation}>
-        {city + ", " + country}
-      </p>
-      </div>)}
+      )}
+      {temperature && (
+        <div className={styles.weatherDescritpionContainer}>
+          <p className={styles.weatherDescriptionData}>
+            {temperature + "\u00b0C, "}
+            {weatherCondition}
+          </p>
+          <img
+            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+            alt=""
+            className={styles.weatherDescriptionIcon}
+          />
+          <p className={styles.weatherDescriptionLocation}>
+            {city + ", " + country}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap');
 
 .weatherBox {
-    font-family: 'Source Code Pro', monospace; 
+    font-family: 'Source Code Pro', monospace;
+    display: flex;
      
 }
 
-.weatherDescritpion {
-    display: grid;
+.weatherDescritpionContainer {
+    display: flex;
+    flex-direction: row;
 }
+
+
+

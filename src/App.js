@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function App() {
   const [showCustomLocation, setShowCustomLocation] = useState(false);
-
   const showForm = (e) => {
     setShowCustomLocation(!showCustomLocation);
     console.log(showCustomLocation);
