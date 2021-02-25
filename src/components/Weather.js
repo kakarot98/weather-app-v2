@@ -36,27 +36,30 @@ const Weather = () => {
   }, []);
 
   return (
-    <div className={styles.weatherBox}>
+    <div className={styles.weatherContainer}>
       {!temperature && (
-        <img
-          src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
-          alt="loading"
-        />
+        <div className={styles.weatherIconContainer}>
+          <img
+            src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+            alt="loading"
+            classname={styles.weatherIcon}
+          />
+        </div>
       )}
       {temperature && (
-        <div className={styles.weatherDescritpionContainer}>
-          <p className={styles.weatherDescriptionData}>
+        <div className={styles.weatherDetails}>
+          <p className={styles.temperatureText}>
             {temperature + "\u00b0C, "}
             {weatherCondition}
           </p>
-          <img
-            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-            alt=""
-            className={styles.weatherDescriptionIcon}
-          />
-          <p className={styles.weatherDescriptionLocation}>
-            {city + ", " + country}
-          </p>
+          <div className={styles.weatherIconContainer}>
+            <img
+              src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+              alt=""
+              className={styles.weatherIcon}
+            />
+          </div>
+          <p className={styles.locationName}>{city + ", " + country}</p>
         </div>
       )}
     </div>
